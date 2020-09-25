@@ -1,11 +1,12 @@
 from imports import *
+from model import *
 
-def splitChapters(filename):
+def splitChapters(filename, mailid):
     checkFlag = 0
     skipCount = 0
     flag = 0
     chapterNumber = 0
-    filename = filename[:7]
+    filename = filename[:-4]
     file = filename + '.txt'
     with open(file, 'r', encoding='utf-8') as f1:
         lines = f1.readlines()
@@ -56,8 +57,15 @@ def splitChapters(filename):
                 print('All Chapters written!\n')
                 break
     f1.close()
+    try:
+        os.remove(os.path.join(app.config['PDF_UPLOADS'] + '/pdf_file.pdf'))
+        os.renove(os.path.join(app.config['PDF_UPLOADS'] + '/pdf_file.txt'))
+    except:
+        pass
+    finally:
+        summaryGeneration(mailid)
 
-def pdfParser(filename):
+def pdfParser(filename, mailid):
 
     fp = open(filename, 'rb')
     rsrcmgr = PDFResourceManager()
@@ -73,12 +81,11 @@ def pdfParser(filename):
         data =  retstr.getvalue()
 
     print('Converting PDF to txt file')
-    filename = filename[:7]
-    file = filename + '.txt'
+    file = filename[:-4] + '.txt'
     with open(file, 'w', encoding='utf-8') as f:
         f.write(data)
     f.close()
     print('Successfully converted PDF to txt.')
-    splitChapters(filename)
+    splitChapters(filename, mailid)
 
 

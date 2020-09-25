@@ -1,0 +1,11 @@
+Dear User,
+
+Thank you for participating in our book summarisation project.
+
+Please find attached a ZIP file containing the chapter-wise summaries of the book you provided.
+
+We highly value your feedback. Should you have any suggestions or comments on how we might improve our service, please do let us know.
+
+Warm regards,
+
+-John
