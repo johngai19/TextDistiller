@@ -58,9 +58,9 @@ def summaryGeneration(mailid):
         f.close()
         os.remove(os.path.join(app.config['PDF_UPLOADS'] + '/' + fname))
 
-    makezip(mailid)
+    #makezip(mailid)
 
-def makezip(mailid):
+#def makezip(mailid):
     # function to compress all summary text files into single zip file
     # call mail function and send zip file
 

@@ -38,6 +38,6 @@ def upload_pdf():
 
 
 if __name__ == '__main__':
-    app.run(debug=False, use_reloader=False)
+    app.run()
 
 #    pdfParser(os.path.join(app.config["PDF_UPLOADS"], filename))
