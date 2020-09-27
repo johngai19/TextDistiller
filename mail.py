@@ -28,4 +28,3 @@ def send_mail(zipfile_name, receiver_address):
     session.sendmail(sender_address, receiver_address, text)
     session.quit()
     print('Mail Sent')
-    return 'OK'

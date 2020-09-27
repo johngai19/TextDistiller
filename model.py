@@ -19,8 +19,6 @@ def getSummary(text,tokenizer):
     t5_prepared_Text = "summarize: "+preprocess_text
     tokenized_text = tokenizer.encode(t5_prepared_Text, return_tensors="pt").to(device)
 
-
-    # summmarize
     summary_ids = model.generate(tokenized_text,
                                         num_beams=4,
                                         no_repeat_ngram_size=2,
@@ -39,7 +37,7 @@ def summaryGeneration(mailid):
             txtFiles.append(filename)
 
     for fname in txtFiles:
-        print("Summarising :", fname)
+        print("Summarising: ", fname)
         text = ""
         with open(os.path.join(app.config['PDF_UPLOADS'] + '/' + fname), 'r', encoding="utf-8") as f:
             textLines = f.readlines()
@@ -49,18 +47,21 @@ def summaryGeneration(mailid):
                 text += line
 
             summary = getSummary(text, tokenizer)
-            print("Summarisation done!!!")
+            print("Summarisation complete!")
             fileName = fname[:-4] + "_summary.txt"
             with open(os.path.join(app.config['PDF_UPLOADS'] + '/' + fileName), 'w', encoding="utf-8") as f1:
                 f1.write(summary)
-            print("Summary written into file!")
+            print("Summary written to file!")
             f1.close()
         f.close()
         os.remove(os.path.join(app.config['PDF_UPLOADS'] + '/' + fname))
 
-    #makezip(mailid)
+    makezipAndCleanUp(mailid)
 
-#def makezip(mailid):
+def makezipAndCleanUp(mailid):
     # function to compress all summary text files into single zip file
     # call mail function and send zip file
+    shutil.make_archive('summarized_chapters', 'zip', app.config['PDF_UPLOADS'])
+    print(os.listdir(app.config['PDF_UPLOADS']))
+    #for file in os.listdir(app.config['PDF_UPLOADS'])
 

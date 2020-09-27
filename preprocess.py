@@ -18,7 +18,7 @@ def splitChapters(filename, mailid):
             check = any(item in words for item in tokens)
 
             if check is True:
-                print('Contents page found!!\n')
+                print('Contents page found!\n')
                 checkFlag = 1
                 skipCount = 40
                 continue
@@ -59,8 +59,9 @@ def splitChapters(filename, mailid):
     f1.close()
     try:
         os.remove(os.path.join(app.config['PDF_UPLOADS'] + '/pdf_file.pdf'))
-        os.renove(os.path.join(app.config['PDF_UPLOADS'] + '/pdf_file.txt'))
-    except:
+        os.remove(os.path.join(app.config['PDF_UPLOADS'] + '/pdf_file.txt'))
+    except Exception as e:
+        print(e)
         pass
     finally:
         summaryGeneration(mailid)
@@ -72,20 +73,16 @@ def pdfParser(filename, mailid):
     retstr = io.StringIO()
     laparams = LAParams()
     device = TextConverter(rsrcmgr, retstr, laparams=laparams)
-    # Create a PDF interpreter object.
     interpreter = PDFPageInterpreter(rsrcmgr, device)
-    # Process each page contained in the document.
 
     for page in PDFPage.get_pages(fp, check_extractable=False):
         interpreter.process_page(page)
         data =  retstr.getvalue()
 
-    print('Converting PDF to txt file')
+    print('Converting PDF to txt file.')
     file = filename[:-4] + '.txt'
     with open(file, 'w', encoding='utf-8') as f:
         f.write(data)
     f.close()
     print('Successfully converted PDF to txt.')
     splitChapters(filename, mailid)
-
-

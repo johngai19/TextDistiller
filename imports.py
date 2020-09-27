@@ -3,6 +3,7 @@ import io
 import json
 import os
 import re
+import shutil
 import smtplib
 import sys
 import torch
@@ -17,6 +18,7 @@ from pdfminer.converter import HTMLConverter, TextConverter, XMLConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfinterp import PDFPageInterpreter, PDFResourceManager
 from pdfminer.pdfpage import PDFPage
+from threading import Thread
 from transformers import T5Tokenizer, T5ForConditionalGeneration, T5Config
 from werkzeug.utils import secure_filename
 
