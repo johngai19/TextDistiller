@@ -11,6 +11,10 @@ def allowed_pdf(filename):
         return True
     return False
 
+@app.route("/", methods=["GET"])
+def redirect_to_site():
+    return redirect(request.url + 'upload-pdf')
+
 @app.route('/upload-pdf', methods=["GET", "POST"])
 def upload_pdf():
     if request.method == "POST":
@@ -33,4 +37,5 @@ def upload_pdf():
 
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get("PORT", 9876))
+    app.run(host="0.0.0.0", port=port)

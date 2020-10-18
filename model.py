@@ -5,7 +5,6 @@ model = T5ForConditionalGeneration.from_pretrained('t5-small')
 tokenizer = T5Tokenizer.from_pretrained('t5-small')
 device = torch.device('cpu')
 
-
 def cleanText(text):
     text = re.sub(r"@[A-Za-z0-9]+", ' ', text)
     text = re.sub(r"https?://[A-Za-z0-9./]+", ' ', text)
@@ -64,4 +63,3 @@ def makezipAndCleanUp(mailid):
     shutil.make_archive('summarized_chapters', 'zip', app.config['PDF_UPLOADS'])
     print(os.listdir(app.config['PDF_UPLOADS']))
     #for file in os.listdir(app.config['PDF_UPLOADS'])
-

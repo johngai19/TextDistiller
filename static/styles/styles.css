@@ -3,8 +3,26 @@ a {
     text-decoration: underline;
 }
 
+.row-header {
+  padding: 0px auto;
+  text-align:center;
+  align:center;
+}
+
+@media screen and (max-width: 600px) {
+    div.header-texth {
+    font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    div.header-textp {
+    font-size: 13px;
+    }
+}
+
 .jumbotron {
-    padding: 30px 30px 40px 30px;
+    padding: 20px 20px 20px 20px;
     margin: 0px auto;
     background: black;
     color: floralwhite;
@@ -14,7 +32,7 @@ a {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: #D1C4E9;
+    background-color: #dedede;
     margin: 0px auto;
     padding: 20px 0px 5px 0px;
 }
