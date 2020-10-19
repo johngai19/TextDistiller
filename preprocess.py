@@ -56,6 +56,13 @@ def splitChapters(filename, mailid):
             if ignoreCheck is True:
                 print('All Chapters written!\n')
                 break
+
+        if flag == 0:
+            print('No chapters in book! Writing entire book!')
+            with open(filename + 'ChapterAll.txt', 'w', encoding="utf-8") as f2:
+                f2.writelines(lines)
+            f2.close()
+            print("Done writing!")
     f1.close()
     try:
         os.remove(os.path.join(app.config['PDF_UPLOADS'] + '/pdf_file.pdf'))
