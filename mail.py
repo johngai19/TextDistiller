@@ -2,8 +2,8 @@ from imports import *
 
 def send_fail(receiver_address):
     mail_content_file = open('error_body.txt')
-    sender_address = 'deshpandesaarth@gmail.com'
-    sender_pass = 'kalidas7'
+    sender_address = 'YOUR_EMAIL_HERE'
+    sender_pass = 'PASS'
     # Setup the MIME
     message = MIMEMultipart()
     message['From'] = "John Ngai"
@@ -22,8 +22,8 @@ def send_fail(receiver_address):
 
 def send_mail(zipfile_name, receiver_address):
     mail_content_file = open('mail_body.txt')
-    sender_address = 'deshpandesaarth@gmail.com'
-    sender_pass = 'kalidas7'
+    sender_address = 'YOUR_EMAIL_HERE'
+    sender_pass = 'PASS'
     # Setup the MIME
     message = MIMEMultipart()
     message['From'] = "John Ngai"

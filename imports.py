@@ -27,6 +27,6 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-app.config["PDF_UPLOADS"] = "/home/johngai19/PycharmProjects/summarization/static/pdf/uploads"
+app.config["PDF_UPLOADS"] = "static/pdf/uploads"
 app.config["ALLOWED_EXTENSIONS"] = ["PDF"]
 app.config["MAX_CONTENT_LENGTH"] = 20 * 1024 * 1024
