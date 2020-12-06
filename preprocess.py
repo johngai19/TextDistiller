@@ -1,7 +1,8 @@
 from imports import *
 from model import *
 
-def splitChapters(filename, mailid):
+
+def splitChapters(filename, mailid=None):
     checkFlag = 0
     skipCount = 0
     flag = 0
@@ -39,7 +40,7 @@ def splitChapters(filename, mailid):
             elif flag == 1:
                 if counter == 0:
                     counter += 1
-                    print('Chapter',chapterNumber,'found! Writing to a txt file')
+                    print('Chapter', chapterNumber, 'found! Writing to a txt file')
                     file = filename + 'Chapter' + str(chapterNumber) + '.txt'
                     with open(file, 'w', encoding='utf-8') as f2:
                         f2.write(line)
@@ -73,8 +74,8 @@ def splitChapters(filename, mailid):
     finally:
         summaryGeneration(mailid)
 
-def pdfParser(filename, mailid):
 
+def pdfParser(filename, mailid=None):
     fp = open(filename, 'rb')
     rsrcmgr = PDFResourceManager()
     retstr = io.StringIO()
@@ -84,7 +85,7 @@ def pdfParser(filename, mailid):
 
     for page in PDFPage.get_pages(fp, check_extractable=False):
         interpreter.process_page(page)
-        data =  retstr.getvalue()
+        data = retstr.getvalue()
 
     print('Converting PDF to txt file.')
     file = filename[:-4] + '.txt'
