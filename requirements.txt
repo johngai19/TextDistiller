@@ -17,7 +17,7 @@ Jinja2==2.11.3
 joblib==0.15.1
 kombu==4.6.10
 MarkupSafe==1.1.1
-nltk==3.5
+nltk==3.6.5
 numpy==1.18.5
 packaging==20.4
 pdfminer==20191125
