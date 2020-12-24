@@ -21,7 +21,7 @@ nltk==3.6.5
 numpy==1.18.5
 packaging==20.4
 pdfminer==20191125
-pipenv==2018.11.26
+pipenv==2022.1.8
 pycparser==2.20
 pycryptodome==3.9.7
 pyparsing==2.4.7
